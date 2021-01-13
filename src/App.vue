@@ -4,11 +4,15 @@
       <div class="title">{{title}}</div>
     </header>
 
-    <section class="main-content w-50 mx-auto">
-      <main-navigation></main-navigation>
-      <windows-list ></windows-list>
-      <rooms-list ></rooms-list>
+<section class="main-content w-50 mx-auto">
+      <button v-for="tab in tabs" :key="tab" @click="selected = tab;">
+                  {{ tab }}
+      </button>
+
+      <component :is="selected" class="tab"></component>
+
     </section>
+
   </div>
 </template>
 
@@ -27,6 +31,9 @@ export default {
   data: function() {
     return {
       title: 'My Faircorp app',
+      tabs: ["WindowsList", "RoomsList"],
+      selected: "WindowsList"
+
     }
   },
 }

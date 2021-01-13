@@ -1,15 +1,17 @@
 <template>
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <button class="nav-link me-2" href="#" @click="change_tab_window" >Windows</button>
-    </li>
-    <li class="nav-item">
+    <div>
+
+      <button v-for="tab in tabs" :key="tab" @click="selected = tab;">
+            {{ tab }}
+          </button>
+      <!-- <button class="nav-link me-2" href="#" @click="change_tab_window" >Windows</button>
       <button type="button" class="nav-link" href="#"  @click="change_tab_room">Rooms</button>
-    </li>
-  </ul>
+      These two lines were not used for this version-->
+
+        <component :is="selected" class="tab"></component>
+    </div>
 </template>
 
-//changer les fonctions pour que tab_window et tab_room puisse etre récup dans App pour l'affichage conditionel
 <script>
 export default {
   name: 'MainNavigation',
@@ -34,3 +36,4 @@ export default {
   }
 }
 </script>
+
